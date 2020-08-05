@@ -4,7 +4,6 @@
 <!--  Language: English  -->
 
 <oo>
-
 	<!-- ID to EnergyTier -->
 	<!-- HU SU - 蒸汽锅炉,SU KU - 蒸汽引擎,EU KU - 电动引擎,SU RU - 单方块涡轮,EU HU - 电力加热器, -->
 	<!-- EU RU - 电力旋转动能引擎,EU MU - 电磁铁,EU EU - 变压器,EU EU - 电池盒,EU LU - CO2激光器, -->
@@ -250,18 +249,14 @@
 					}
 				}
 				if(BBA['gt.invlist'][i.toString()] != undefined){
-					if(parseInt((BBA['gt.invlist'][i.toString()]['Damage'] / 100) % BatteryIDArg) == (BBA['gt.mte.id'] % BatteryBoxArg_0) || parseInt((BBA['gt.invlist'][i.toString()]['Damage'] / 100) % BatteryIDArg) == (BBA['gt.mte.id'] % BatteryBoxArg_1)){
-						if(BBA['gt.invlist'][i.toString()]['tag'] != undefined){
-							EUAmount += BBA['gt.invlist'][i.toString()]['tag']['gt.energy'];
-						}
-						BatteryAmount++;
-						if(isEU == 1){
-							BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"EU");
-						}else{
-							BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"LU");
-						}
+					if(BBA['gt.invlist'][i.toString()]['tag'] != undefined){
+						EUAmount += BBA['gt.invlist'][i.toString()]['tag']['gt.energy'];
+					}
+					BatteryAmount++;
+					if(isEU == 1){
+						BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"EU");
 					}else{
-						errorAmount++;
+						BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"LU");
 					}
 				}
 			}
@@ -274,6 +269,24 @@
 			}
 		}
 	</init>
+	<!--
+		if(parseInt((BBA['gt.invlist'][i.toString()]['Damage'] / 100) % BatteryIDArg) == (BBA['gt.mte.id'] % BatteryBoxArg_0) || parseInt((BBA['gt.invlist'][i.toString()]['Damage'] / 100) % BatteryIDArg) == (BBA['gt.mte.id'] % BatteryBoxArg_1)){
+						if(BBA['gt.invlist'][i.toString()]['tag'] != undefined){
+							EUAmount += BBA['gt.invlist'][i.toString()]['tag']['gt.energy'];
+						}
+						BatteryAmount++;
+						if(isEU == 1){
+							BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"EU");
+						}else{
+							BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"LU");
+						}
+					}else{
+						errorAmount++;
+					}
+
+
+	-->
+
 
 	<!-- 电池容量 -->
 	<init>
@@ -293,6 +306,36 @@
 					case 20105:{return 16000;}
 					case 20106:{return 16000;}
 					case 20107:{return 16000;}
+					case 14000:{return 16000;}
+					case 14001:{return 64000;}
+					case 14002:{return 256000;}
+					case 14003:{return 1024000;}
+					case 14004:{return 4096000;}
+					case 14005:{return 16384000;}
+					case 14010:{return 16000*2;}
+					case 14011:{return 64000*2;}
+					case 14012:{return 256000*2;}
+					case 14013:{return 1024000*2;}
+					case 14014:{return 4096000*2;}
+					case 14015:{return 16384000*2;}	
+					case 14020:{return 16000*2;}
+					case 14021:{return 64000*2;}
+					case 14022:{return 256000*2;}
+					case 14023:{return 1024000*2;}
+					case 14024:{return 4096000*2;}
+					case 14025:{return 16384000*2;}
+					case 14030:{return 16000*32;}
+					case 14031:{return 64000*32;}
+					case 14032:{return 256000*32;}
+					case 14033:{return 1024000*32;}
+					case 14034:{return 4096000*32;}
+					case 14035:{return 16384000*32;}
+					case 14040:{return 16000*64;}
+					case 14041:{return 64000*64;}
+					case 14042:{return 256000*64;}
+					case 14043:{return 1024000*64;}
+					case 14044:{return 4096000*64;}
+					case 14045:{return 16384000*64;}
 				}
 			}
 			if(mInput == "LU"){
@@ -363,9 +406,11 @@
 				case 32734:{return 32000;}
 				case 32715:{return 32000;}
 				case 32716:{return 64000;}
+				case 32064:{return 64000;}
 				case 32742:{return 128000;}
 				case 32717:{return 256000;}
 				case 32718:{return 256000;}
+				case 32083:{return 512000;}
 				case 32719:{return 4096000;}
 				case 17001:{return 432000;}
 				case 17002:{return 1728000;}
@@ -620,35 +665,32 @@
 	    <!-- <line displayname="Current Temperature">
 		return nbt['gt.temperature']+BLUE+" K"
         </line>   -->
-		<line displayname="Smelting Material Kinds">
-		return nbt['gt.materials']['size']+BLUE+" 种"
-        </line>
 		<line displayname="Smelting Material 1">
-		return (nbt['gt.materials']['0']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['0']['i']
+		return (nbt['gt.materials']['0']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['0']['i'])
         </line>
 		<line displayname="Smelting Material 2">
-		return (nbt['gt.materials']['1']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['1']['i']
+		return (nbt['gt.materials']['1']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['1']['i'])
         </line>
 		<line displayname="Smelting Material 3">
-		return (nbt['gt.materials']['2']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['2']['i']
+		return (nbt['gt.materials']['2']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['2']['i'])
         </line>
 		<line displayname="Smelting Material 4">
-		return (nbt['gt.materials']['3']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['3']['i']
+		return (nbt['gt.materials']['3']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['3']['i'])
         </line>
 		<line displayname="Smelting Material 5">
-		return (nbt['gt.materials']['4']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['4']['i']
+		return (nbt['gt.materials']['4']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['4']['i'])
         </line>
 		<line displayname="Smelting Material 6">
-		return (nbt['gt.materials']['5']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['5']['i']
+		return (nbt['gt.materials']['5']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['5']['i'])
         </line>
 		<line displayname="Smelting Material 7">
-		return (nbt['gt.materials']['6']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['6']['i']
+		return (nbt['gt.materials']['6']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['6']['i'])
         </line>
 		<line displayname="Smelting Material 8">
-		return (nbt['gt.materials']['7']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['7']['i']
+		return (nbt['gt.materials']['7']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['7']['i'])
         </line>
 		<line displayname="Smelting Material 9">
-		return (nbt['gt.materials']['8']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['8']['i']
+		return (nbt['gt.materials']['8']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['8']['i'])
         </line>
 	</tileentity>
 	
@@ -657,35 +699,32 @@
 	    <!-- <line displayname="Current Temperature">
 		return nbt['gt.temperature']+BLUE+" K"
         </line>   -->
-		<line displayname="Smelting Material Kinds">
-		return nbt['gt.materials']['size']+BLUE+" 种"
-        </line>
 		<line displayname="Smelting Material 1">
-		return (nbt['gt.materials']['0']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['0']['i']
+		return (nbt['gt.materials']['0']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['0']['i'])
         </line>
 		<line displayname="Smelting Material 2">
-		return (nbt['gt.materials']['1']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['1']['i']
+		return (nbt['gt.materials']['1']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['1']['i'])
         </line>
 		<line displayname="Smelting Material 3">
-		return (nbt['gt.materials']['2']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['2']['i']
+		return (nbt['gt.materials']['2']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['2']['i'])
         </line>
 		<line displayname="Smelting Material 4">
-		return (nbt['gt.materials']['3']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['3']['i']
+		return (nbt['gt.materials']['3']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['3']['i'])
         </line>
 		<line displayname="Smelting Material 5">
-		return (nbt['gt.materials']['4']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['4']['i']
+		return (nbt['gt.materials']['4']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['4']['i'])
         </line>
 		<line displayname="Smelting Material 6">
-		return (nbt['gt.materials']['5']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['5']['i']
+		return (nbt['gt.materials']['5']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['5']['i'])
         </line>
 		<line displayname="Smelting Material 7">
-		return (nbt['gt.materials']['6']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['6']['i']
+		return (nbt['gt.materials']['6']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['6']['i'])
         </line>
 		<line displayname="Smelting Material 8">
-		return (nbt['gt.materials']['7']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['7']['i']
+		return (nbt['gt.materials']['7']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['7']['i'])
         </line>
 		<line displayname="Smelting Material 9">
-		return (nbt['gt.materials']['8']['a'] / 648648000).toFixed(2)+BLUE+"份 "+RED+nbt['gt.materials']['8']['i']
+		return (nbt['gt.materials']['8']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['8']['i'])
         </line>
 	</tileentity>
 	
@@ -1401,9 +1440,40 @@
 
 	<!-- 管道 -->
 	<tileentity id = "gt.multitileentity.connector.pipe.fluid">
-	    <line displayname = "Containing Fluid">
-	    if(nbt['gt.tank.0']['Amount']!=undefined){
-		return fluidName(nbt['gt.tank.0']['FluidName'])+": "+GREEN+nbt['gt.tank.0']['Amount'] + Unit("L");}
+	    <line displayname = "Fluid 1: ">
+			if(nbt['gt.tank.0']['Amount'] != undefined){
+				return fluidName(nbt['gt.tank.0']['FluidName'])+": "+GREEN+nbt['gt.tank.0']['Amount'] + Unit("L");}
+		</line>
+		<line displayname = "Fluid 2: ">
+			if(nbt['gt.tank.1']['Amount'] != undefined){
+				return fluidName(nbt['gt.tank.1']['FluidName'])+": "+GREEN+nbt['gt.tank.1']['Amount'] + Unit("L");}
+		</line>
+		<line displayname = "Fluid 3: ">
+			if(nbt['gt.tank.2']['Amount'] != undefined){
+				return fluidName(nbt['gt.tank.2']['FluidName'])+": "+GREEN+nbt['gt.tank.2']['Amount'] + Unit("L");}
+		</line>
+		<line displayname = "Fluid 4: ">
+			if(nbt['gt.tank.3']['Amount'] != undefined){
+				return fluidName(nbt['gt.tank.3']['FluidName'])+": "+GREEN+nbt['gt.tank.3']['Amount'] + Unit("L");}
+		</line>	    
+		<line displayname = "Fluid 5: ">
+			if(nbt['gt.tank.4']['Amount'] != undefined){
+				return fluidName(nbt['gt.tank.4']['FluidName'])+": "+GREEN+nbt['gt.tank.4']['Amount'] + Unit("L");}
+		<line displayname = "Fluid 6: ">
+			if(nbt['gt.tank.5']['Amount'] != undefined){
+				return fluidName(nbt['gt.tank.5']['FluidName'])+": "+GREEN+nbt['gt.tank.5']['Amount'] + Unit("L");}
+		</line>
+		<line displayname = "Fluid 7: ">
+			if(nbt['gt.tank.6']['Amount'] != undefined){
+				return fluidName(nbt['gt.tank.6']['FluidName'])+": "+GREEN+nbt['gt.tank.6']['Amount'] + Unit("L");}
+		</line>
+		<line displayname = "Fluid 8: ">
+			if(nbt['gt.tank.7']['Amount'] != undefined){
+				return fluidName(nbt['gt.tank.7']['FluidName'])+": "+GREEN+nbt['gt.tank.7']['Amount'] + Unit("L");}
+		</line>		
+		<line displayname = "Fluid 9: ">
+			if(nbt['gt.tank.8']['Amount'] != undefined){
+				return fluidName(nbt['gt.tank.8']['FluidName'])+": "+GREEN+nbt['gt.tank.8']['Amount'] + Unit("L");}
 		</line>
 	</tileentity>
 	
