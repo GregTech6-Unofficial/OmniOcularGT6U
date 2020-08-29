@@ -316,6 +316,12 @@
 		}
 		}
 		else{
+		if(mID >= 14040){
+		return 64 * ID2Cap(mID - 40,"EU");
+		}
+		if(mID >= 14030){
+		return 32 * ID2Cap(mID - 30,"EU");
+		}
 		if(mID >= 14020){
 		return 2 * ID2Cap(mID - 20,"EU");
 		}
@@ -405,8 +411,12 @@
 		case 32064:{return 64000;}
 		case 32022:{return 64000;}
 		case 32023:{return 64000;}
+		case 32089:{return 128000;}
 		case 32742:{return 128000;}
 		case 32063:{return 256000;}
+		case 32100:{return 256000;}
+		case 32717:{return 256000;}
+		case 32718:{return 256000;}
 		case 32083:{return 512000;}
 		case 32024:{return 1024000;}
 		case 32087:{return 4096000;}
@@ -414,6 +424,7 @@
 		case 17001:{return 432000;}
 		case 17002:{return 1728000;}
 		case 17007:{return 1728000;}
+		case 17008:{return 2474000;}
 		case 17006:{return 3456000;}
 		case 17003:{return 6912000;}
 		case 17004:{return 6912000;}
@@ -421,6 +432,7 @@
 		case 17009:{return 8192000;}
 		case 17022:{return 6912000;}
 		case 17027:{return 6912000;}
+		case 17028:{return 9896000;}
 		case 17026:{return 13824000;}
 		case 17023:{return 27648000;}
 		case 17024:{return 27648000;}
@@ -448,6 +460,7 @@
 		switch(LC['gt.mte.id']){
 		case 17042:{return 8000000;}
 		case 17047:{return 8000000;}
+		case 17048:{return 12000000;}
 		case 17046:{return 16000000;}
 		case 17043:{return 32000000;}
 		case 17044:{return 32000000;}
@@ -455,6 +468,7 @@
 		case 17049:{return 64000000;}
 		case 17062:{return 32000000;}
 		case 17067:{return 32000000;}
+		case 17068:{return 48000000;}
 		case 17066:{return 64000000;}
 		case 17063:{return 128000000;}
 		case 17064:{return 128000000;}
@@ -2051,6 +2065,13 @@
 
 	<!-- 单方块储罐 -->
 	<tileentity id = "gt.multitileentity.tank.barrel.wood">
+		<line displayname = "流体存量">
+			return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+		</line>
+	</tileentity>
+	
+	<!-- 单方块储罐 -->
+	<tileentity id = "gt.multitileentity.tank.barrel.plastic">
 		<line displayname = "流体存量">
 			return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
