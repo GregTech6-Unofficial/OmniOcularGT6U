@@ -662,9 +662,9 @@
 
 	<!-- 坩埚   -->
     <tileentity id="gt.multitileentity.smeltery">
-	    <!-- <line displayname="Current Temperature">
-		return nbt['gt.temperature']+BLUE+" K"
-        </line>   -->
+	    <line displayname = "Current Temperature">
+			return nbt['gt.temperature'] + Unit("K") + " / " + KevinCap(nbt['gt.mte.id']) + Unit("K");
+        </line>
 		<line displayname="Smelting Material 1">
 		return (nbt['gt.materials']['0']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['0']['i'])
         </line>
@@ -696,9 +696,9 @@
 	
 	    <!-- 大型坩埚   -->
     <tileentity id="gt.multitileentity.multiblock.crucible">
-	    <!-- <line displayname="Current Temperature">
-		return nbt['gt.temperature']+BLUE+" K"
-        </line>   -->
+	    <line displayname = "Current Temperature">
+			return nbt['gt.temperature'] + Unit("K") + " / " + KevinCap(nbt['gt.mte.id']) + Unit("K");
+        </line>
 		<line displayname="Smelting Material 1">
 		return (nbt['gt.materials']['0']['a'] / 648648000).toFixed(2) + " " + RED+ID2OD(nbt['gt.materials']['0']['i'])
         </line>
