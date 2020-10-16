@@ -334,6 +334,7 @@
 		case 14002:{return 256000;}
 		case 14003:{return 1024000;}
 		case 14004:{return 4096000;}
+		case 14005:{return 4096000;}
 		}
 		}
 		}
@@ -391,7 +392,9 @@
 		case "K":{return AQUA + " K" + WHITE;}
 		case "种":{return AQUA + " 种" + WHITE;}
 		case "S":{return AQUA + " S" + WHITE;}
-		case "个":{return AQUA + " 个" + WHITE;}
+		case "个":{return AQUA + " 个 " + WHITE;}
+		case "N":{return DPURPLE + " N" + WHITE;}
+		case "分钟":{return BLUE + " 分钟" + WHITE;}
 		}
 		}
 	</init>
@@ -1903,18 +1906,18 @@
 			var str = '';
 			str = name(nbt['gt.invlist']['0']);
 			
-			if(nbt['gt.invlist']['0']['tag']['gt.durability']!= undefined){
+			if((nbt['gt.invlist']['0']['tag']!= undefined) && (nbt['gt.invlist']['0']['tag']['gt.durability']!= undefined)){
 			if((nbt['gt.invlist']['0']['Damage']>=9400) && (nbt['gt.invlist']['0']['Damage']< 9500)){
-			str += ": "+BLUE+"转换需要: "+GREEN+nbt['gt.invlist']['0']['tag']['gt.durability']+DPURPLE+" N";
+			str += ": "+BLUE+"转换需要: "+GREEN+nbt['gt.invlist']['0']['tag']['gt.durability']+Unit("N");
 			}
 			else{
-			str += ": "+BLUE+"剩余: "+GREEN+(nbt['gt.invlist']['0']['tag']['gt.durability']/120000).toFixed(0)+BLUE+" 分钟";
+			str += ": "+BLUE+"剩余: "+GREEN+(nbt['gt.invlist']['0']['tag']['gt.durability']/120000).toFixed(0)+Unit("分钟");
 			}
 			}
 			var neutnamestr = '';
 			neutnamestr = 'gt.value.o.' + nbt['gt.invlist']['0']['s'];
 			if(nbt[neutnamestr]!= undefined){
-			str += WHITE+" "+nbt[neutnamestr]+DPURPLE+" N";
+			str += " "+nbt[neutnamestr]+Unit("N");
 			}
 			return str;
 			}
@@ -1924,18 +1927,18 @@
 			var str = '';
 			str = name(nbt['gt.invlist']['1']);
 			
-			if(nbt['gt.invlist']['1']['tag']['gt.durability']!= undefined){
+			if((nbt['gt.invlist']['1']['tag']!= undefined) && (nbt['gt.invlist']['1']['tag']['gt.durability']!= undefined)){
 			if((nbt['gt.invlist']['1']['Damage']>=9400) && (nbt['gt.invlist']['1']['Damage']< 9500)){
-			str += ": "+BLUE+"转换需要: "+GREEN+nbt['gt.invlist']['1']['tag']['gt.durability']+DPURPLE+" N";
+			str += ": "+BLUE+"转换需要: "+GREEN+nbt['gt.invlist']['1']['tag']['gt.durability']+Unit("N");
 			}
 			else{
-			str += ": "+BLUE+"剩余: "+GREEN+(nbt['gt.invlist']['1']['tag']['gt.durability']/120000).toFixed(0)+BLUE+" 分钟";
+			str += ": "+BLUE+"剩余: "+GREEN+(nbt['gt.invlist']['1']['tag']['gt.durability']/120000).toFixed(0)+Unit("分钟");
 			}
 			}
 			var neutnamestr = '';
 			neutnamestr = 'gt.value.o.' + nbt['gt.invlist']['1']['s'];
 			if(nbt[neutnamestr]!= undefined){
-			str += WHITE+" "+nbt[neutnamestr]+DPURPLE+" N";
+			str += " "+nbt[neutnamestr]+Unit("N");
 			}
 			return str;
 			}
@@ -1945,18 +1948,18 @@
 			var str = '';
 			str = name(nbt['gt.invlist']['2']);
 			
-			if(nbt['gt.invlist']['2']['tag']['gt.durability']!= undefined){
+			if((nbt['gt.invlist']['2']['tag']!= undefined) && (nbt['gt.invlist']['2']['tag']['gt.durability']!= undefined)){
 			if((nbt['gt.invlist']['2']['Damage']>=9400) && (nbt['gt.invlist']['2']['Damage']< 9500)){
-			str += ": "+BLUE+"转换需要: "+GREEN+nbt['gt.invlist']['2']['tag']['gt.durability']+DPURPLE+" N";
+			str += ": "+BLUE+"转换需要: "+GREEN+nbt['gt.invlist']['2']['tag']['gt.durability']+Unit("N");
 			}
 			else{
-			str += ": "+BLUE+"剩余: "+GREEN+(nbt['gt.invlist']['2']['tag']['gt.durability']/120000).toFixed(0)+BLUE+" 分钟";
+			str += ": "+BLUE+"剩余: "+GREEN+(nbt['gt.invlist']['2']['tag']['gt.durability']/120000).toFixed(0)+Unit("分钟");
 			}
 			}
 			var neutnamestr = '';
 			neutnamestr = 'gt.value.o.' + nbt['gt.invlist']['2']['s'];
 			if(nbt[neutnamestr]!= undefined){
-			str += WHITE+" "+nbt[neutnamestr]+DPURPLE+" N";
+			str += " "+nbt[neutnamestr]+Unit("N");
 			}
 			return str;
 			}
@@ -1966,18 +1969,18 @@
 			var str = '';
 			str = name(nbt['gt.invlist']['3']);
 			
-			if(nbt['gt.invlist']['3']['tag']['gt.durability']!= undefined){
+			if((nbt['gt.invlist']['3']['tag']!= undefined) && (nbt['gt.invlist']['3']['tag']['gt.durability']!= undefined)){
 			if((nbt['gt.invlist']['3']['Damage']>=9400) && (nbt['gt.invlist']['3']['Damage']< 9500)){
-			str += ": "+BLUE+"转换需要: "+GREEN+nbt['gt.invlist']['3']['tag']['gt.durability']+DPURPLE+" N";
+			str += ": "+BLUE+"转换需要: "+GREEN+nbt['gt.invlist']['3']['tag']['gt.durability']+Unit("N");
 			}
 			else{
-			str += ": "+BLUE+"剩余: "+GREEN+(nbt['gt.invlist']['3']['tag']['gt.durability']/120000).toFixed(0)+BLUE+" 分钟";
+			str += ": "+BLUE+"剩余: "+GREEN+(nbt['gt.invlist']['3']['tag']['gt.durability']/120000).toFixed(0)+Unit("分钟");
 			}
 			}
 			var neutnamestr = '';
 			neutnamestr = 'gt.value.o.' + nbt['gt.invlist']['3']['s'];
 			if(nbt[neutnamestr]!= undefined){
-			str += WHITE+" "+nbt[neutnamestr]+DPURPLE+" N";
+			str += " "+nbt[neutnamestr]+Unit("N");
 			}
 			return str;
 			}
@@ -1997,17 +2000,17 @@
 			if(nbt['gt.invlist']['0']!= undefined){
 			var str = '';
 			str = name(nbt['gt.invlist']['0']);
-		
-			if(nbt['gt.invlist']['0']['tag']['gt.durability']!= undefined){
+			
+			if((nbt['gt.invlist']['0']['tag']!= undefined) && (nbt['gt.invlist']['0']['tag']['gt.durability']!= undefined)){
 			if((nbt['gt.invlist']['0']['Damage']>=9400) && (nbt['gt.invlist']['0']['Damage']< 9500)){
-			str += ": "+BLUE+"转换需要: "+GREEN+nbt['gt.invlist']['0']['tag']['gt.durability']+DPURPLE+" N";
+			str += ": "+BLUE+"转换需要: "+GREEN+nbt['gt.invlist']['0']['tag']['gt.durability']+Unit("N");
 			}
 			else{
-			str += ": "+BLUE+"剩余: "+GREEN+(nbt['gt.invlist']['0']['tag']['gt.durability']/120000).toFixed(0)+BLUE+" 分钟";
+			str += ": "+BLUE+"剩余: "+GREEN+(nbt['gt.invlist']['0']['tag']['gt.durability']/120000).toFixed(0)+Unit("分钟");
 			}
 			}
 			if(nbt['gt.value.o.0']!= undefined){
-			str += WHITE+" "+nbt['gt.value.o.0']+DPURPLE+" N";
+			str += " "+nbt['gt.value.o.0']+Unit("N");
 			}
 			return str;
 			}
